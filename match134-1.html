@@ -1,0 +1,458 @@
+<html>
+<head>
+<title>A67_Sec25_23341043_Towsif-Hassan.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec20_22101540_borhan-uddin.txt<p></p><pre>
+﻿Task-1 lab6
+
+
+<a name="0"></a><font color="#FF0000"><a href="match134-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_10.gif"/></a>
+
+def swap_child(root, level, M):
+  if root is None:
+    return None
+  if level &lt;M:
+    temp=root.left
+    root.left=root.right
+    root.right=temp
+ 
+  swap_child(root.left,level+1,M)
+  swap_child(root.right,level+1,M)
+  return root
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+  #To Do
+
+
+
+
+#Driver Code
+root=BTNode('A')
+#Write other nodes by yourself from the given tree of Doc File
+n1=BTNode("B")
+n2=BTNode("C")
+n3=BTNode("D")
+n4=BTNode("E")
+n5=BTNode("F")
+n6=BTNode("G")
+n7=BTNode("H")
+n8=BTNode("I")
+n9=BTNode("J")
+
+
+root.left = n1
+root.right = n2
+n1.left = n3
+n1.right = n4
+n2.right = n5
+</font>n3.left = n6
+n3.right = n7
+n4.left = n8
+n5.left = n9
+
+
+
+
+
+
+Task2 lab6
+def sum(n):
+  if n is None:
+    return 0
+  left_sum=sum(n.left)
+  right_sum=sum(n.right)
+  return n.elem +left_sum+ right_sum
+
+
+
+
+
+
+
+
+
+
+def subtract_summation(root):
+<a name="2"></a><font color="#0000FF"><a href="match134-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_2.gif"/></a>
+
+  if root is None:
+    return 0
+
+
+  lefty=sum(root.left)
+  righty=sum(root.right)
+  diff=lefty-righty
+  return diff
+
+
+
+
+
+
+  #To Do
+#helper
+
+
+
+
+
+
+#Driver Code
+root=BTNode(71)
+#Write other nodes by yourself from the given tree of Doc File
+
+
+root.left = BTNode(27)
+</font>root.right = BTNode(62)
+
+
+root.left.left = BTNode(80)
+root.left.right = BTNode(75)
+
+
+root.left.left.left = BTNode(87)
+root.left.left.right = BTNode(56)
+
+
+root.right.left = BTNode(41)
+root.right.right = BTNode(3)
+
+
+root.right.right.left = BTNode(19)
+root.right.right.right = BTNode(89)
+
+
+
+
+print(subtract_summation(root)) #This should print 111
+
+
+
+
+
+
+
+
+Task3 lab6
+
+
+#helper
+def t_sum(n,level):
+  if n is None:
+    return 0
+  sum=0
+  if level%2 !=0:
+    sum=sum-n.elem
+  else:
+    sum=sum+n.elem
+  l_result=t_sum(n.left,level+1)
+  r_result=t_sum(n.right,level+1)
+
+
+  return sum+ l_result+ r_result
+
+
+
+
+
+
+
+
+
+
+
+
+def level_sum(root):
+  return t_sum(root,1)
+
+
+  #To Do
+
+
+#DRIVER CODE
+root = BTNode(1)
+n2 = BTNode(2)
+n3 = BTNode(3)
+n4 = BTNode(4)
+n5 = BTNode(5)
+n6 = BTNode(6)
+n7 = BTNode(7)
+n8 = BTNode(8)
+root.left = n2
+root.right = n3
+
+
+n2.left = n4
+n3.left = n5
+n3.right = n6
+
+
+n5.left = n7
+n5.right = n8
+
+
+
+
+print(level_sum(root)) #This should print 4
+
+
+
+
+Task1 lab7
+def rangeSum(root, low, high):
+  if root is None:
+    return 0
+  sum=0
+  if root.elem&gt;=low and root.elem&lt;=high:
+    sum=sum+ root.elem
+
+
+  if root.elem&gt;low:
+    sum=sum+rangeSum(root.left,low,high)
+  if root.elem&lt;high:
+    sum=sum+rangeSum(root.right,low,high)
+  return sum
+
+
+ 
+
+
+  #To Do
+   #delete this line once you're done
+
+
+
+
+#DRIVER CODE
+print("---------------------Test#1---------------------")
+#Example Tree 1
+root = BTNode(8)
+n1 = BTNode(4)
+n2 = BTNode(12)
+n3 = BTNode(2)
+n4 = BTNode(6)
+n5 = BTNode(10)
+n6 = BTNode(14)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.left = n5
+n2.right = n6
+print("Expected Output: 36")
+print("You output     :",rangeSum(root, 5, 13))
+
+
+print("---------------------Test#2---------------------")
+
+
+#Example Tree 1
+root = BTNode(10)
+n1 = BTNode(5)
+n2 = BTNode(15)
+n3 = BTNode(3)
+n4 = BTNode(7)
+
+
+n6 = BTNode(18)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.right = n6
+print("Expected Output: 32")
+print("You output     :",rangeSum(root, 7, 15))
+
+
+Task2 lab7
+def mirror_sum(root):
+  if root is None:
+    return 0
+  return s_mirror(root.left,root.right)
+
+
+  #To Do
+  #delete this line once you're done\
+<a name="1"></a><font color="#00FF00"><a href="match134-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_4.gif"/></a>
+
+def s_mirror(n1,n2):
+  if n1 is None or n2 is None:
+    return 0
+  sum=n1.elem + n2.elem
+
+
+  lefty_right=s_mirror(n1.left,n2.right)
+  righty_left= s_mirror(n1.right,n2.left)
+
+
+  return sum+lefty_right+righty_left
+</font>
+
+
+
+
+
+#DRIVER CODE
+print("---------------------Test#1---------------------")
+#Example Tree 1
+root = BTNode(10)
+n1 = BTNode(6)
+n2 = BTNode(15)
+n3 = BTNode(3)
+n4 = BTNode(8)
+n5 = BTNode(12)
+n6 = BTNode(20)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.left = n5
+n2.right = n6
+print("Expected Output: 64")
+print("You output     :",mirror_sum(root))
+
+
+print("---------------------Test#2---------------------")
+
+
+#Example Tree 1
+root = BTNode(20)
+n1 = BTNode(15)
+n2 = BTNode(25)
+n3 = BTNode(10)
+n4 = BTNode(18)
+n5 = BTNode(5)
+n6 = BTNode(30)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n3.left = n5
+n2.right = n6
+print("Expected Output: 80")
+print("You output     :",mirror_sum(root))
+
+
+
+
+ Task3 lab7
+
+
+def isBST(root):
+  return helper(root,min_val=None,max_val=None)
+def helper(root,min_val,max_val):
+  if root is None:
+    return True
+  if min_val is not None and root.elem&lt;=min_val:
+    return False
+  if max_val is not None and root.elem&gt;=max_val:
+    return False
+ 
+  left_bst=helper(root.left,min_val,root.elem)
+
+
+  right_bst=helper(root.right,root.elem,max_val)
+
+
+  return left_bst and right_bst
+
+
+
+
+
+
+
+
+
+
+  #To Do
+  #delete this line once you're done
+
+
+#DRIVER CODE
+print("---------------------Test#1---------------------")
+#Example Tree 1
+root = BTNode(4)
+n1 = BTNode(9)
+n2 = BTNode(2)
+n3 = BTNode(3)
+n4 = BTNode(-5)
+n6 = BTNode(7)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.right = n6
+print("Expected Output: False")
+print("You output     :",isBST(root))
+
+
+print("---------------------Test#2---------------------")
+
+
+#Example Tree 1
+root = BTNode(4)
+n1 = BTNode(2)
+n2 = BTNode(7)
+n3 = BTNode(-5)
+n4 = BTNode(3)
+n6 = BTNode(9)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.right = n6
+print("Expected Output: True")
+print("You output     :",isBST(root))</pre>
+</body>
+</html>

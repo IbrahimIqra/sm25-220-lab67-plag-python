@@ -1,0 +1,300 @@
+<html>
+<head>
+<title>A67_Sec27_23301521_Rashedul-Karim-Mahim.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec25_22201010_Sumaya-Akter-Kashpia.txt<p></p><pre>
+﻿LAB_6:
+#task4:
+
+
+def swap_child(root, level, M):
+  #To Do
+  if root==None:
+    return 0
+  if root.left is None  and root.right is None:
+    return root.elem
+  else:
+<a name="0"></a><font color="#FF0000"><a href="match110-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_21.gif"/></a>
+
+    if level&lt;M:
+      temp=root.left
+      root.left=root.right
+      root.right=temp
+      swap_child(root.left,level+1,M)
+      swap_child(root.right,level+1,M)
+      return root
+
+
+
+
+#Driver Code
+root=BTNode('A')
+#Write other nodes by yourself from the given tree of Doc File
+
+
+n1 = BTNode('B')
+n2 = BTNode('C')
+n3 = BTNode('D')
+n4 = BTNode('E')
+n5= BTNode('F')
+n6=BTNode('G')
+n7= BTNode('H')
+n8= BTNode('I')
+n9= BTNode('J')
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.right=n5
+
+
+n3.left=n6
+n3.right=n7
+
+
+n4.left=n8
+
+
+n5.left=n9
+
+
+
+
+print('Given Tree Inorder Traversal: ', end = ' ')
+inorder(root)   #Given Tree Inorder Traversal: G D H B I E A C J F
+print()
+
+
+root2 = swap_child(root, 0, 2)
+print('Swapped Tree Inorder Traversal: ', end = ' ')
+inorder(root2)  #Swapped Tree Inorder Traversal: J F C A I E B G D H
+</font>
+
+
+
+
+
+
+
+
+
+#task5
+def subtract_summation(root):
+  #To Do
+  if root == None:
+    return 0
+ 
+
+
+  def helper(node):
+    if node==None:
+      return 0
+   
+    return node.elem+helper(node.left)+helper(node.right)
+
+
+
+
+  leftsum=helper(root.left)
+<a name="1"></a><font color="#00FF00"><a href="match110-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_4.gif"/></a>
+
+  rightsum=helper(root.right)
+
+
+  return leftsum-rightsum
+ 
+
+
+#Driver Code
+root=BTNode(71)
+#Write other nodes by yourself from the given tree of Doc File
+node2 = BTNode(27)
+node3 = BTNode(62)
+node4 = BTNode(80)
+node5 = BTNode(75)
+node6 = BTNode(41)
+node7 = BTNode(3)
+</font>node8 = BTNode(87)
+node9 = BTNode(56)
+node10 = BTNode(19)
+node11 = BTNode(89)
+
+
+root.left = node2
+root.right = node3
+
+
+node2.left = node4
+node2.right=node5
+
+
+node3.left = node6
+node3.right = node7
+
+
+node4.left = node8
+node4.right = node9
+
+
+node7.left=node10
+node7.right=node11
+
+
+
+
+
+
+print(subtract_summation(root)) #This should print 111
+
+
+
+
+#task6
+
+
+def level_sum(root):
+  #To Do
+  if root==None:
+    return 0
+
+
+  def helper(root,level=0):
+    if root==None:
+      return 0
+    if level%2==0:
+      sum=-root.elem
+    else:
+      sum=root.elem
+   
+    return sum + helper(root.left,level+1) + helper(root.right,level+1)
+
+
+
+
+ 
+  return helper(root,0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LAB_7:
+
+
+#task4:
+def rangeSum(root, low, high):
+  #To Do
+  if root == None:
+    return 0
+ 
+  curr=0
+  if low&lt;=root.elem&lt;=high:
+    curr=root.elem
+  lsum=0
+  if root.elem&gt;low:
+    lsum=rangeSum(root.left, low, high)
+   
+  rsum=0
+  if root.elem&lt;high:
+    rsum=rangeSum(root.right, low, high)
+ 
+  return curr+lsum+rsum
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+#task5
+
+
+def mirror_sum(root):
+  #To Do
+
+
+  if root==None:
+    return 0
+
+
+<a name="2"></a><font color="#0000FF"><a href="match110-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_4.gif"/></a>
+
+  def helper(leftnode,rightnode):
+    if leftnode==None or rightnode==None:
+      return 0
+   
+    initialsum=leftnode.elem+rightnode.elem
+
+
+    lsum= helper(leftnode.left,rightnode.right)
+</font>
+
+    rsum=helper(leftnode.right, rightnode.left)
+   
+    return initialsum + lsum + rsum
+ 
+  return helper(root.left, root.right)
+   
+
+
+
+
+#task6:
+
+
+def isBST(root):
+  #To Do
+
+
+  def helper(root,leftnode,rightnode):
+    if leftnode==None or rightnode==None:
+      return True
+
+
+    if (leftnode!=None and root.elem&lt;=leftnode.elem) or (rightnode!=None and root.elem&gt;=leftnode.elem):
+      return False
+
+
+   
+    return helper(root.left,root.left.left,root.left.right) and helper(root.right ,root.right.left, root.right,right)
+
+
+   
+
+
+  return helper(root,root.left, root.right)</pre>
+</body>
+</html>

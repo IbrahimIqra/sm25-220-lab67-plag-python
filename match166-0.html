@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>A67_Sec27_22201035_NAJIBAH-ZAMAN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec27_22201035_NAJIBAH-ZAMAN.txt<p></p><pre>
+#LAB 06
+
+#Task 04 
+
+def swap_child(root, level, M):
+  if root is None:
+    return None
+  if root.left is None and root.right is None:
+    return root
+<a name="0"></a><font color="#FF0000"><a href="match166-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_22.gif"/></a>
+
+  if level &gt;= M:
+    root.left, root.right = root.right, root.left
+  swap_child(root.left, level + 1, M)
+  swap_child(root.right, level + 1, M)
+  return root
+
+#Driver Code
+root=BTNode('A')
+root.left = BTNode("B")
+root.right = BTNode("C")
+root.left.left = BTNode("D")
+root.left.right = BTNode("E")
+root.right.right = BTNode("F")
+root.left.left.left = BTNode("G")
+root.left.left.right = BTNode("H")
+root.left.right.left = BTNode("I")
+root.right.right.left = BTNode("J")
+</font>
+#Task 05
+
+def subtract_summation(root):
+  def sumhelper(root):
+    if root is None:
+      return 0
+    if root.left is None and root.right is None:
+      return root.elem
+    return root.elem + sumhelper(root.left) + sumhelper(root.right)
+  return sumhelper(root.left) - sumhelper(root.right)
+
+#Driver Code
+root=BTNode(71)
+root.left = BTNode(27)
+root.right = BTNode(62)
+<a name="1"></a><font color="#00FF00"><a href="match166-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+root.left.left = BTNode(80)
+root.left.right = BTNode(75)
+root.right.left = BTNode(41)
+root.left.left.left = BTNode(56)
+root.left.left.right = BTNode(87)
+root.right.left.left = BTNode(3)
+</font>root.right.left.right = BTNode(19)
+root.right.right = BTNode(89)
+
+#Task 06
+
+def level_sum(root):
+  def level_sum_helper(root, level):
+    if root is None:
+      return 0
+    curr = 0 
+    if level % 2 == 1: 
+      curr += root.elem
+    else:  
+      curr -= root.elem
+    left_sum = level_sum_helper(root.left, level + 1)
+    right_sum = level_sum_helper(root.right, level + 1)
+        
+    return cur + left_sum + right_sum
+    
+  return level_sum_helper(root, 1)
+
+#LAB 07
+
+#Task 04
+
+def rangeSum(root, low, high):
+    if root is None:
+        return 0
+    if root.elem &lt; low:
+        return rangeSum(root.right, low, high)
+    if root.elem &gt; high:
+        return rangeSum(root.left, low, high)
+    result = root.elem + rangeSum(root.left, low, high) + rangeSum(root.right, low, high)
+    return result
+
+#Task 05
+
+<a name="2"></a><font color="#0000FF"><a href="match166-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+def mirror_sum(root):
+  if root is None:
+    return 0
+  def pair_sum(left_child, right_child):
+    if left_child is None or right_child is None:
+      return 0
+    sum = left_child.elem + right_child.elem
+</font>    left_pair = pair_sum(left_child.left, right_child.right)
+    right_pair = pair_sum(left_child.right, right_child.left)
+    result = sum + left_pair + right_pair
+    return result
+  return pair_sum(root.left, root.right)
+
+</pre>
+</body>
+</html>

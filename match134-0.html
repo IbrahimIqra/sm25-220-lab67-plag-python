@@ -1,0 +1,176 @@
+<html>
+<head>
+<title>A67_Sec25_23341043_Towsif-Hassan.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec25_23341043_Towsif-Hassan.txt<p></p><pre>
+﻿Task 4
+<a name="0"></a><font color="#FF0000"><a href="match134-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_19.gif"/></a>
+
+def swap_child(root, level, M):
+
+
+    if root is None:
+        return root
+
+
+    if level &lt; M:
+        tmp0 = root.left
+        root.left = root.right
+        root.right = tmp0
+
+
+    swap_child(root.left,level+1, M)
+    swap_child(root.right,level+1, M)
+    return root
+
+
+#Driver Code
+root=BTNode('A')
+b=BTNode('B')
+c=BTNode('C')
+d=BTNode('D')
+e=BTNode('E')
+f=BTNode('F')
+g=BTNode('G')
+h=BTNode('H')
+i=BTNode('I')
+j=BTNode('J')
+
+
+root.left=b
+root.right=c
+b.left=d
+b.right=e
+c.right=f
+</font>d.left=g
+d.right=h
+e.left=i
+f.left=j
+
+
+
+
+Task 5
+def subtract_summation(root):
+ 
+    def extSum(t):
+        if t is None:
+            return 0
+        return t.elem + extSum(t.left) + extSum(t.right)
+
+
+<a name="2"></a><font color="#0000FF"><a href="match134-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+    if root is None:
+        return 0
+    leftSum  = extSum(root.left)
+    rightSum = extSum(root.right)
+    ans = leftSum - rightSum
+    return ans
+
+
+
+
+
+
+#Driver Code
+root=BTNode(71)
+#Write other nodes by yourself from the given tree of Doc File
+a = BTNode(27
+</font>b = BTNode(62)
+c = BTNode(80) 
+d = BTNode(75) 
+e = BTNode(41) 
+f = BTNode(3)
+g = BTNode(87) 
+h = BTNode(56) 
+i = BTNode(19) 
+j = BTNode(89)
+
+
+root.left = a; root.right = b
+a.left = c; a.right = d
+b.left = e; b.right = f
+c.left = g; c.right = h
+f.left = i; f.right = j
+
+
+Task 6
+def level_sum(root):
+    def go(now,lvl):
+        if now==None:
+            return 0
+        if lvl%2==0:
+            here = -now.elem
+        else:
+            here = now.elem
+        return here + go(now.left,lvl+1) + go(now.right,lvl+1)
+    return go(root,0)
+
+
+
+
+Task 4
+def rangeSum(root, low, high):
+    if root is None:
+        return 0
+
+
+    val = root.elem
+
+
+    if val &lt; low:
+        return rangeSum(root.right, low, high)
+
+
+    if val &gt; high:
+        return rangeSum(root.left, low, high)
+
+
+    lefty  = rangeSum(root.left,  low, high)
+    righty = rangeSum(root.right, low, high)
+   
+    ans = val + lefty + righty
+    return ans
+
+
+Task 5
+def mirror_sum(root):
+    if root is None:
+        return 0
+
+
+<a name="1"></a><font color="#00FF00"><a href="match134-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+    def smoosh(a,b):
+        if a is None or b is None:
+            return 0
+        this_pair = a.elem + b.elem
+        side1 = smoosh(a.left,  b.right)
+        side2 = smoosh(a.right, b.left)
+        return this_pair + side1 + side2
+</font>
+
+    return smoosh(root.left, root.right)
+
+
+#Task 6
+def isBST(root):
+    def walk(t, low, high):
+        if t is None:
+            return True
+        x = t.elem
+        if low is not None and x &lt;= low:
+            return False
+        if high is not None and x &gt;= high:
+            return False
+        left_ok  = walk(t.left,low, x)
+        right_ok = walk(t.right, x,high)
+        return left_ok and right_ok
+
+
+    return walk(root, None, None)</pre>
+</body>
+</html>

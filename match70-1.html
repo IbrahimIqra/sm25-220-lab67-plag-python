@@ -1,0 +1,171 @@
+<html>
+<head>
+<title>A67_Sec09_21201724_Tahmid-Faiz-Noor.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec11_22201248_MD.-Ismail-Hossain-Asif---MD.-ISMAIL-HOSSAIN-ASIF.txt<p></p><pre>
+Name: MD. Ismail Hossain Asif
+ID: 22201248
+Section: 11
+Assignment-6: Binary Tree
+assignment-7: Binary Search Tree
+---------------------------------
+
+
+Task-4: Swap Children Nodes(L6-BT)
+===============================
+def swap_child(root, level, M):
+  #To Do
+  if root==None:
+    return
+  root2=BTNode(root.elem)
+  if level&lt;M:
+<a name="0"></a><font color="#FF0000"><a href="match70-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_14.gif"/></a>
+
+    root2.left=swap_child(root.right, level+1, M)
+    root2.right=swap_child(root.left, level+1, M)
+  else:
+    root2.left=swap_child(root.left, level+1, M)
+    root2.right=swap_child(root.right, level+1, M)
+  return root2
+
+#Driver Code
+root=BTNode('A')
+#Write other nodes by yourself from the given tree of Doc File
+node1=BTNode('B')
+node2=BTNode('C')
+node3=BTNode('D')
+node4=BTNode('E')
+node5=BTNode('F')
+node6=BTNode('G')
+node7=BTNode('H')
+node8=BTNode('I')
+node9=BTNode('J')
+
+root.left=node1
+root.right=node2
+node1.left=node3
+node1.right=node4
+node2.right=node5
+</font>node3.left=node6
+node3.right=node7
+node4.left=node8
+node5.left=node9
+
+
+Task-5: Subtraction of Nodes(L6-BT)
+================================
+def subtract_summation(root):
+  #To Do
+  return helper(root.left)-helper(root.right)
+
+def helper(root):
+  if root==None:
+    return 0
+  else:
+<a name="2"></a><font color="#0000FF"><a href="match70-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+    return root.elem+helper(root.left)+helper(root.right)
+
+#Driver Code
+root=BTNode(71)
+#Write other nodes by yourself from the given tree of Doc File
+node1=BTNode(27)
+node2=BTNode(62)
+node3=BTNode(80)
+node4=BTNode(75)
+node5=BTNode(87)
+node6=BTNode(56)
+</font>node7=BTNode(41)
+node8=BTNode(3)
+node9=BTNode(19)
+node10=BTNode(89)
+
+root.left=node1
+root.right=node2
+
+node1.left=node3
+node1.right=node4
+node3.left=node5
+node3.right=node6
+
+node2.left=node7
+node2.right=node8
+node8.left=node9
+node8.right=node10
+
+Task-6: Difference of Level Sum (L6-BT)
+====================================
+def level_sum(root):
+  #To Do
+  return helper(root,0)
+def helper(root, var):
+  if root==None:
+    return 0
+  else:
+    if var%2==0:
+      if root.elem!=None:
+        return -root.elem+helper(root.left, var+1)+helper(root.right, var+1)
+    elif var%2!=0:
+      if root.elem!=None:
+        return helper(root.left, var+1)+helper(root.right, var+1)+root.elem
+
+
+
+Task-4: Sum of range (L7-BST)
+==========================
+def rangeSum(root, low, high):
+  sum=0
+  if root is None:
+    return 0
+
+<a name="3"></a><font color="#00FFFF"><a href="match70-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+  if root.elem&gt;low:
+    sum+=rangeSum(root.left, low, high)
+
+  if root.elem&lt;high:
+    sum+=rangeSum(root.right, low, high)
+</font>
+  if low&lt;=root.elem&lt;=high:
+    sum+=root.elem
+
+  return sum
+
+
+Task-5: Mirror Sum of a BST (L7-BST)
+=================================
+<a name="1"></a><font color="#00FF00"><a href="match70-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_5.gif"/></a>
+
+def helper(left, right):
+  if left is None or right is None:
+    return 0
+
+  C1=right.elem+left.elem
+  C2=helper(left.right, right.left)
+  C3=helper(left.left, right.right)
+
+  return C1 + C2 + C3
+</font>
+def mirror_sum(root):
+  #To Do
+  if root==None:
+    return 0
+  return helper(root.left, root.right)
+
+
+Task-6: Check BST (L7-BST)
+=======================
+def isBST(root):
+    def helper(node, min, max):
+        if node is None:
+            return True
+        if node.elem&gt;=max or node.elem&lt;=min:
+            return False
+        return helper(node.left, min, node.elem) and helper(node.right, node.elem, max)
+
+    return helper(root, float('-inf'), float('inf'))
+</pre>
+</body>
+</html>

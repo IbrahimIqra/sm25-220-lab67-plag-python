@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>A67_Sec04_23101020_Saima-Afroze---SAIMA-AFROZE.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec04_23101020_Saima-Afroze---SAIMA-AFROZE.txt<p></p><pre>
+﻿LAB-6
+<a name="0"></a><font color="#FF0000"><a href="match80-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_14.gif"/></a>
+
+Assignment task 1:
+def swap_child(root, level, M):
+  if level == M:
+    return root
+  if root == None:
+    return None
+  left = swap_child(root.left,level+1,M)
+  right = swap_child(root.right,level+1,M)
+  root.right = left
+  root.left = right
+  return root
+
+
+#Driver Code
+root=BTNode('A')
+#Write other nodes by yourself from the given tree of Doc File
+n1 = BTNode("B")
+n2 = BTNode("C")
+n3 = BTNode("D")
+n4 = BTNode("E")
+n5 = BTNode("F")
+</font>n6 = BTNode("G")
+n7 = BTNode("H")
+n8 = BTNode("I")
+n9 = BTNode("J")
+
+
+root.left = n1
+root.right = n2
+n1.left = n3
+n1.right = n4
+n2.right = n5
+n3.left = n6
+n3.right = n7
+n4.left = n8
+n5.left = n9
+
+
+
+
+Assignment task 2:
+<a name="1"></a><font color="#00FF00"><a href="match80-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_12.gif"/></a>
+
+def subtract_summation(root):
+   if root == None:
+     return 0
+   return helper(root.left) - helper(root.right)
+
+
+def helper(root):
+  if root == None:
+     return 0
+  return root.elem + helper(root.left) + helper(root.right)
+
+
+#Driver Code
+root=BTNode(71)
+#Write other nodes by yourself from the given tree of Doc File
+n1 = BTNode(27)
+n2 = BTNode(62)
+n3 = BTNode(80)
+n4 = BTNode(75)
+n5 = BTNode(41)
+n6 = BTNode(3)
+</font>n7 = BTNode(87)
+n8 = BTNode(56)
+n9 = BTNode(19)
+n10 = BTNode(89)
+
+
+root.left = n1
+root.right = n2
+n1.left = n3
+n1.right = n4
+n2.left = n5
+n2.right = n6
+n3.left = n7
+n3.right = n8
+n6.left = n9
+n6.right = n10
+
+
+
+
+Assignment task 3:
+def level_sum(root):
+  def helper(node, level):
+    if not node:
+      return 0
+    l=helper(node.left, level + 1)
+    r=helper(node.right, level + 1)
+    if level % 2 != 0:
+      return node.elem +l + r
+    else:
+      return -node.elem +l+ r
+  return helper(root, 0)
+
+
+                                                   
+                                                       LAB-7
+
+
+Assignment task 1:
+<a name="2"></a><font color="#0000FF"><a href="match80-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_10.gif"/></a>
+
+def rangeSum(root, low, high):
+  if root == None:
+    return 0
+  if root.elem &lt; low:
+    return rangeSum(root.right,low,high)
+  if root.elem &gt; high:
+    return rangeSum(root.left,low,high)
+  return root.elem + rangeSum(root.left,low,high) + rangeSum(root.right,low,high)
+</font>
+
+Assignment task 2:
+def mirror_sum(root):
+  if root==None:
+    return 0
+  def helper(left, right):
+    if left==None or right==None:
+      return 0
+    return left.elem + right.elem + helper(left.left, right.right) + helper(left.right, right.left)
+  return helper(root.left, root.right)
+
+
+
+
+Assignment task 3:
+def isBST(root):
+    def helper(node, min_val, max_val):
+        if not node:
+            return True
+        if (min_val!=None and node.elem&lt;=min_val) or (max_val!=None and node.elem&gt;=max_val):
+            return False
+        return helper(node.left,min_val,node.elem) and helper(node.right,node.elem,max_val)
+    return helper(root, None, None)</pre>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>A67_Sec27_22201902_Marzuk-Maaz---MARZUK-MAAZ.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_sec24_23301390_Sajidul-Islam---SAJIDUL-ISLAM.txt<p></p><pre>
+﻿#LAB6
+#task4
+def swap_child(root, level, M):
+  if root is None:
+    return root
+  if level % M == 0:
+    root.left, root.right = root.right, root.left
+  swap_child(root.left, level+1, M)
+  swap_child(root.right, level+1, M)
+  return root
+
+
+
+
+#task5
+<a name="2"></a><font color="#0000FF"><a href="match73-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_13.gif"/></a>
+
+def subtract_summation(root):
+  def subtree_sum(node):
+    if node is None:
+      return 0
+      return node.elem + subtree_sum(node.left) + subtree_sum(node.right)
+
+
+    if root is None:
+     return 0
+
+
+    left_sum = subtree_sum(root.left)
+    right_sum = subtree_sum(root.right)
+
+
+    return left_sum - right_sum + root.elem
+</font>
+
+
+
+#task6
+def level_sum(root):
+  def current_lvl(node, level):
+    if node is None:
+      return 0
+    if level % 2 == 0:
+      return current_lvl(node.left, level+1) + current_lvl(node.right, level+1) + node.elem
+    else:
+      return current_lvl(node.left, level+1) + current_lvl(node.right, level+1) -node.elem
+  return current_lvl(root, 1)
+
+
+#LAB7
+
+
+#task4
+<a name="1"></a><font color="#00FF00"><a href="match73-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_14.gif"/></a>
+
+def rangeSum(root, low, high):
+  if root is None:
+    return 0
+  if root.elem&lt;low:
+    return rangeSum(root.right, low, high)
+  if root.elem&gt;high:
+    return rangeSum(root.left, low, high)
+  return root.elem+ rangeSum(root.left, low, high) + rangeSum(root.right, low, high)
+</font>
+
+#task5
+def mirror_sum(root):
+  if root is None:
+    return 0
+<a name="3"></a><font color="#00FFFF"><a href="match73-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_12.gif"/></a>
+
+  def helper(left, right):
+    if left is None or right is None:
+      return 0
+       
+    total = left.elem + right.elem
+    total += helper(left.left, right.right)
+    total += helper(left.right, right.left)
+    return total
+</font>
+
+  return helper(root.left, root.right)
+
+
+
+
+$task6
+<a name="0"></a><font color="#FF0000"><a href="match73-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_15.gif"/></a>
+
+def isBST(root):
+    prev = [None]
+    def inorder_check(node):
+        if node is None:
+            return True
+        if not inorder_check(node.left):
+            return False
+        if prev[0] is not None and node.elem &lt;= prev[0]:
+            return False
+        prev[0] = node.elem
+        return inorder_check(node.right)
+</font>
+
+    return inorder_check(root)</pre>
+</body>
+</html>

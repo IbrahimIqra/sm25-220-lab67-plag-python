@@ -1,0 +1,202 @@
+<html>
+<head>
+<title>A67_sec21_22101931_Halimaya-Sadia---HALIMAYA-SADIA.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec01_21201403_Tahsin-Ahmed-Chowdhury.txt<p></p><pre>
+﻿Lab 6 - Binary Tree
+
+
+Task 4
+def swap_child(root, level, M):
+ #To Do
+ if level is M:
+   return None
+ curr = root
+ swap_child(root.left, level + 1, M)
+ swap_child(root.right, level + 1, M)
+ curr = root.left
+ root.left = root.right
+<a name="0"></a><font color="#FF0000"><a href="match112-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_15.gif"/></a>
+
+ root.right = curr
+ return root
+
+
+#Driver Code
+root=BTNode('A')
+#Write other nodes by yourself from the given tree of Doc File
+node2 = BTNode("B")
+node3 = BTNode("C")
+
+
+node4 = BTNode("D")
+node5 = BTNode("E")
+node6 = BTNode("F")
+
+
+node7 = BTNode("G")
+node8 = BTNode("H")
+node9 = BTNode("I")
+node10 = BTNode("J")
+
+
+root.left = node2
+root.right = node3
+
+
+node2.left = node4
+node2.right = node5
+
+
+node3.right = node6
+
+
+node4.left = node7
+node4.right = node8
+
+
+node5.left = node9
+node6.left = node10
+
+
+Task 5
+def subtract_summation(root):
+</font> #To Do
+ return(sumLeft(root.left)-sumRight(root.right))
+def sumLeft(root,sum1=0):
+ if root==None:
+   return sum1
+ sum1=sumLeft(root.left,sum1)
+ sum1+=root.elem
+ sum1=sumLeft(root.right,sum1)
+ return sum1
+def sumRight(root,sum2=0):
+ if root==None:
+   return sum2
+ sum2=sumRight(root.left,sum2)
+ sum2+=root.elem
+ sum2=sumRight(root.right,sum2)
+<a name="2"></a><font color="#0000FF"><a href="match112-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_4.gif"/></a>
+
+ return sum2
+
+
+
+
+
+
+#Driver Code
+root=BTNode(71)
+node1=BTNode(27)
+node2=BTNode(80)
+node3=BTNode(75)
+node4=BTNode(87)
+node5=BTNode(56)
+node6=BTNode(62)
+</font>node7=BTNode(41)
+node8=BTNode(3)
+node9=BTNode(19)
+node10=BTNode(89)
+
+
+root.left=node1
+root.right=node6
+
+
+node1.left=node2
+node1.right=node3
+
+
+node2.left=node4
+<a name="3"></a><font color="#00FFFF"><a href="match112-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_4.gif"/></a>
+
+node2.right=node5
+
+
+node6.left=node7
+node6.right=node8
+
+
+node8.left=node9
+node8.right=node10
+
+
+print(subtract_summation(root)) 
+
+
+Task 6
+</font>def level_sum(root,l=1,sum=0):
+ if root==None:
+   return sum
+ sum=level_sum(root.left,l+1,sum)
+ sum=level_sum(root.right,l+1,sum)
+ if l%2==0:
+   sum+=root.elem
+ else:
+   sum-=root.elem
+ #sum=level_sum(root.right,l+1,sum)
+ return sum
+
+
+
+
+Lab 7 - Binary Search Tree
+
+
+Task 4
+def rangeSum(root, low, high):
+<a name="1"></a><font color="#00FF00"><a href="match112-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_8.gif"/></a>
+
+    if root is None:
+       return 0
+  
+    if root.val &lt; low:
+       return rangeSum(root.right, low, high)
+  
+    if root.val &gt; high:
+       return rangeSum(root.left, low, high)
+  
+    return (root.val +
+           rangeSum(root.left, low, high) +
+           rangeSum(root.right, low, high))
+
+
+
+
+Task 5
+def mirror_sum(root):
+</font>  def dfs(left, right):
+      if not left or not right:
+          return 0
+    
+      # Sum this pair
+      pair_sum = left.val + right.val
+    
+      # Recursively sum for outer and inner children
+      return pair_sum + dfs(left.left, right.right) + dfs(left.right, right.left)
+   if not root:
+      return 0
+   return dfs(root.left, root.right)
+
+
+Task 6 
+def isBST(root):
+   prev = [None] 
+
+
+   def inorder(node):
+       if node is None:
+           return True
+       if not inorder(node.left):
+           return False
+       if prev[0] is not None and node.val &lt;= prev[0]:
+           return False
+       prev[0] = node.val
+       return inorder(node.right)
+
+
+   return inorder(root)</pre>
+</body>
+</html>

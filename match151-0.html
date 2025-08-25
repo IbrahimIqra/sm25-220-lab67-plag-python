@@ -1,0 +1,232 @@
+<html>
+<head>
+<title>A67_Sec01_22299532_Kazi-Raima-Rahman-.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec01_22299532_Kazi-Raima-Rahman-.txt<p></p><pre>
+﻿Assignment task 04
+
+
+def swap_child(root, level, M):
+  if root==None:
+    return
+<a name="0"></a><font color="#FF0000"><a href="match151-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_14.gif"/></a>
+
+  if level&lt;M:
+    temp=root.left
+    root.left=root.right
+    root.right=temp
+    swap_child(root.left,level+1,M)
+    swap_child(root.right,level+1,M)
+  return root
+
+
+  #To Do
+
+
+
+
+#Driver Code
+root=BTNode('A')
+b=BTNode('B')
+c=BTNode('C')
+d=BTNode('D')
+e=BTNode('E')
+f=BTNode('F')
+g=BTNode('G')
+h=BTNode('H')
+i=BTNode('I')
+j=BTNode('J')
+
+
+root.left=b
+root.right=c
+
+
+b.left=d
+b.right=e
+
+
+d.left=g
+</font>d.right=h
+
+
+e.left=i
+
+
+c.right=f
+
+
+f.left=j
+
+
+Assignment task 05
+
+
+def subtract_summation(root):
+  def helper(root1):
+    if root1==None:
+      return 0
+    return root1.elem+helper(root1.left)+helper(root1.right)
+<a name="2"></a><font color="#0000FF"><a href="match151-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+  return helper(root.left)-helper(root.right)
+
+
+
+
+  #To Do
+
+
+
+
+
+
+#Driver Code
+root=BTNode(71)
+a27=BTNode(27)
+a62=BTNode(62)
+a80=BTNode(80)
+a75=BTNode(75)
+a41=BTNode(41)
+a3=BTNode(3)
+</font>a87=BTNode(87)
+a56=BTNode(56)
+a19=BTNode(19)
+a89=BTNode(89)
+
+
+root.left=a27
+root.right=a62
+
+
+a27.left=a80
+a27.right=a75
+
+
+a80.left=a87
+a80.right=a56
+
+
+a62.left=a41
+a62.right=a3
+
+
+a3.left=a19
+a3.right=a89
+
+
+
+
+Assignment task 06
+
+
+def level_sum(root):
+  def helper(root1,i):
+    if root1==None:
+      return 0
+    if i%2==0:
+      return -root1.elem+helper(root1.left,i+1)+helper(root1.right,i+1)
+    else:
+      return root1.elem+helper(root1.left,i+1)+helper(root1.right,i+1)
+  return helper(root,0)
+  #To Do
+
+
+#DRIVER CODE
+root = BTNode(1)
+n2 = BTNode(2)
+n3 = BTNode(3)
+n4 = BTNode(4)
+n5 = BTNode(5)
+n6 = BTNode(6)
+n7 = BTNode(7)
+n8 = BTNode(8)
+root.left = n2
+root.right = n3
+
+
+<a name="3"></a><font color="#00FFFF"><a href="match151-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+n2.left = n4
+n3.left = n5
+n3.right = n6
+
+
+n5.left = n7
+n5.right = n8
+
+
+
+
+print(level_sum(root))
+
+
+
+
+
+
+Assignment 7 task04 
+</font>
+
+def rangeSum(root, low, high):
+  if root==None:
+    return 0
+  if low&lt;=root.elem&lt;=high:
+    return root.elem + rangeSum(root.left, low, high) + rangeSum(root.right, low, high)
+  else:
+    return 0 + rangeSum(root.left, low, high) + rangeSum(root.right, low, high)
+
+
+
+
+
+
+Task05
+
+
+<a name="1"></a><font color="#00FF00"><a href="match151-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_5.gif"/></a>
+
+def helper(root1, root2):
+  if root1==None or root2==None:
+    return 0
+  return root1.elem+root2.elem+helper(root1.left,root2.right)+helper(root1.right,root2.left)
+</font>def mirror_sum(root):
+  return helper(root.left, root2.right)
+
+
+
+
+
+
+
+
+Task06
+
+
+def isBST(root):
+  if root==None:
+    return True
+  if root.left==None and root.right==None:
+    return True
+  elif root.left==None and root.right!=None:
+    if root.elem&gt;root.right.elem:
+      return False
+    a=isBST(root.left)
+    b=isBST(root.right)
+    return a and b
+  elif root.right==None and root.lrft!=None:
+    if root.elem&lt;root.left.elem:
+      return False
+    a=isBST(root.left)
+    b=isBST(root.right)
+    return a and b
+  elif root.left.elem&lt;=root.elem&lt;=root.right.elem:
+    a=isBST(root.left)
+    b=isBST(root.right)
+    return a and b
+  else:
+    return False</pre>
+</body>
+</html>

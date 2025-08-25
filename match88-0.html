@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>A67_Sec21_23201053_Zaima-Zaheen-Hanna.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec21_23201053_Zaima-Zaheen-Hanna.txt<p></p><pre>
+﻿LAB-06 
+
+
+#TASK 04
+def swap_child(root, level, M):
+  if root!=None and  level&lt; M:
+    left= root.right
+    right=root.left
+    root.left =left
+    root.right=right
+  else:
+<a name="0"></a><font color="#FF0000"><a href="match88-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_15.gif"/></a>
+
+    return root
+  swap_child(root.left,level+1 ,M)
+  swap_child(root.right,level +1,M)
+  return root
+
+
+#Driver Code
+root=BTNode('A')
+root.left=BTNode('B')
+root.right=BTNode('C')
+root.left.left=BTNode('D')
+root.left.right=BTNode('E')
+root.right.right=BTNode('F')
+root.left.left.left=BTNode('G')
+root.left.left.right=BTNode('H')
+root.left.right.left=BTNode('I')
+root.right.right.left=BTNode('J')
+</font>print('Given Tree Inorder Traversal: ', end = ' ')
+inorder(root)   #Given Tree Inorder Traversal: G D H B I E A C J F
+print()
+
+
+root2 = swap_child(root, 0, 2)
+print('Swapped Tree Inorder Traversal: ', end = ' ')
+inorder(root2)  #Swapped Tree Inorder Traversal: J F C A I E B G D H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#TASK 05
+def subtract_summation(root):
+  if root==None:
+    return 0
+  def tree(node):
+    if node is not None:
+      sum= node.elem+ tree(node.left)+tree(node.right)
+    else:
+      return 0
+    return sum
+  sum1=tree(root.left)
+  sum2=tree(root.right)
+  subtraction=sum1-sum2
+  return subtraction
+ 
+#Driver Code
+root=BTNode(71)
+<a name="1"></a><font color="#00FF00"><a href="match88-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+root.left=BTNode(27)
+root.right=BTNode(62)
+root.left.left=BTNode(80)
+root.left.right=BTNode(75)
+root.left.left.left=BTNode(87)
+root.left.left.right=BTNode(56)
+root.right.left=BTNode(41)
+</font><a name="3"></a><font color="#00FFFF"><a href="match88-1.html#3" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_4.gif"/></a>
+
+root.right.right=BTNode(3)
+root.right.right.left=BTNode(19)
+root.right.right.right=BTNode(89)
+</font>
+
+print(subtract_summation(root))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#TASK 06
+def level_sum(root):
+  def helper(node,level):
+    if node ==None:
+      return 0
+    elif level%2==0:
+      diff=node.elem+ helper(node.left,level+1)+ helper(node.right,level+1)
+      return diff
+    else:
+      diff=helper(node.right,level+1)+helper(node.left,level+1)-node.elem
+      return diff
+  return helper(root,1)
+
+
+
+
+
+
+LAB 07
+
+
+#TASK 04
+def rangeSum(root, low, high):
+  if root is None:
+    output=0
+    return output
+
+
+  if low&lt;=root.elem&lt;=high:
+    output= root.elem+ rangeSum(root.left,low, high)+rangeSum( root.right,low,high)
+    return  output
+  elif root.elem&lt;low:
+    output=rangeSum(root.right,low, high)
+    return output
+   
+  elif root.elem&gt;high:
+    output=rangeSum(root.left,low,high)
+<a name="2"></a><font color="#0000FF"><a href="match88-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+    return output
+
+
+
+
+
+
+
+
+#TASK 05
+def mirror_sum(root):
+  if root==None:
+    return 0
+  def helper(L,R):
+    if L==None or R==None:
+      return 0
+    sum=L.elem+R.elem+ helper(L.left,R.right)+helper(R.left,L.right)
+</font>    return sum
+  return helper(root.left,root.right)
+
+
+
+
+#TASK 06
+def isBST(root):
+  def bst(node,min,max):
+    if node==None:
+      return True
+    if max!= None and node.elem&gt;max:
+      return False
+    if min!= None and node.elem&lt;min:
+      return False
+    return bst(node.left,min,node.elem) and bst(node.right, node.elem,max)
+  return bst(root,None,None)</pre>
+</body>
+</html>

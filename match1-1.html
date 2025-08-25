@@ -1,0 +1,336 @@
+<html>
+<head>
+<title>[WRONG-TYPE]A67_Sec13_22101067_Meahjabin-Mourin.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec13_22101425_khandokar-Yusuf-Khalid---KHANDOKAR-YUSUF-KHALID.txt<p></p><pre>
+#################     Assignment 6        ##################
+
+
+
+TASK 4
+
+def swap_child(root, level, M):
+    if root is None:
+        return None
+
+<a name="5"></a><font color="#FF0000"><a href="match1-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_2.gif"/></a>
+
+    if level &gt;= M:
+        root.left, root.right = root.right, root.left
+    swap_child(root.left, level + 1, M)
+    swap_child(root.right, level + 1, M)
+</font>    return root
+
+
+
+#Driver Code
+root=BTNode('A')
+#Write other nodes by yourself from the given tree of Doc File
+root.left = BTNode('B')
+<a name="2"></a><font color="#0000FF"><a href="match1-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_4.gif"/></a>
+
+root.right = BTNode('C')
+
+root.left.left = BTNode('D')
+root.left.right = BTNode('E')
+root.left.left.left= BTNode('G')
+root.left.left.right= BTNode('H')
+root.left.right.left = BTNode('I')
+root.right.right= BTNode('F')
+</font>root.right.right.left= BTNode('J')
+
+
+print('Given Tree Inorder Traversal: ', end = ' ')
+inorder(root)   #Given Tree Inorder Traversal: G D H B I E A C J F
+print()
+
+root2 = swap_child(root, 0, 2)
+print('Swapped Tree Inorder Traversal: ', end = ' ')
+inorder(root2)  #Swapped Tree Inorder Traversal: J F C A I E B G D H
+
+
+
+
+Task 5
+
+def subtract_summation(root):
+    if root is None:
+        return 0
+
+    def subtree_sum(node):
+        if node is None:
+            return 0
+        return node.elem + subtree_sum(node.left) + subtree_sum(node.right)
+
+    left_sum = subtree_sum(root.left)
+    right_sum = subtree_sum(root.right)
+
+<a name="1"></a><font color="#00FF00"><a href="match1-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_6.gif"/></a>
+
+    return left_sum - right_sum
+
+
+#Driver Code
+root=BTNode(71)
+root.left=BTNode(27)
+root.right=BTNode(62)
+
+root.left.left=BTNode(80)
+root.left.right=BTNode(75)
+root.left.left.left=BTNode(87)
+root.left.left.right=BTNode(56)
+
+root.right.left=BTNode(41)
+root.right.right=BTNode(3)
+</font>root.right.right.left=BTNode(19)
+root.right.right.right=BTNode(89)
+
+print(subtract_summation(root)) #Expected Output: 111
+
+
+
+
+Task 6
+
+
+<a name="0"></a><font color="#FF0000"><a href="match1-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_8.gif"/></a>
+
+def level_sum(root):
+    
+    def sum(node, level):
+        if node is None:
+            return 0
+        if level % 2 == 1:
+            return -node.elem + sum(node.left, level + 1) + sum(node.right, level + 1)
+        else:
+            return node.elem + sum(node.left, level + 1) + sum(node.right, level + 1)
+
+    return sum(root, 1)
+
+
+#DRIVER CODE
+root = BTNode(1)
+n2 = BTNode(2)
+n3 = BTNode(3)
+n4 = BTNode(4)
+n5 = BTNode(5)
+</font>n6 = BTNode(6)
+n7 = BTNode(7)
+n8 = BTNode(8)
+root.left = n2
+root.right = n3
+
+n2.left = n4
+n3.left = n5
+n3.right = n6
+
+n5.left = n7
+n5.right = n8
+
+
+print(level_sum(root)) #This should print 4
+
+
+
+
+
+##################   Assignment 7   ###########################
+
+
+
+
+#Task 4
+
+
+def rangeSum(root, low, high):
+  if root== None:
+    return 0
+  elif root.elem &lt;low:
+    return rangeSum(root.right, low, high)
+  elif root.elem &gt;high:
+    return rangeSum(root.left, low, high)
+  else:
+<a name="3"></a><font color="#00FFFF"><a href="match1-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_4.gif"/></a>
+
+    return root.elem + rangeSum(root.left, low, high) + rangeSum(root.right, low, high)
+
+#DRIVER CODE
+print("---------------------Test#1---------------------")
+#Example Tree 1
+root = BTNode(8)
+n1 = BTNode(4)
+n2 = BTNode(12)
+n3 = BTNode(2)
+n4 = BTNode(6)
+n5 = BTNode(10)
+</font>n6 = BTNode(14)
+
+root.left = n1
+root.right = n2
+
+n1.left = n3
+n1.right = n4
+
+n2.left = n5
+n2.right = n6
+print("Expected Output: 36")
+print("You output     :",rangeSum(root, 5, 13))
+
+print("---------------------Test#2---------------------")
+
+#Example Tree 1
+root = BTNode(10)
+n1 = BTNode(5)
+n2 = BTNode(15)
+n3 = BTNode(3)
+n4 = BTNode(7)
+
+n6 = BTNode(18)
+
+root.left = n1
+<a name="6"></a><font color="#00FF00"><a href="match1-0.html#6" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_2.gif"/></a>
+
+root.right = n2
+
+n1.left = n3
+n1.right = n4
+
+n2.right = n6
+print("Expected Output: 32")
+print("You output     :",rangeSum(root, 7, 15))
+
+
+
+
+
+
+#Task 5
+
+
+
+def mirror_sum(root):
+</font>    if root== None:
+        return 0
+
+    def sum(left, right):
+<a name="7"></a><font color="#0000FF"><a href="match1-0.html#7" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_2.gif"/></a>
+
+        if left== None or right== None:
+            return 0
+        return left.elem + right.elem + sum(left.left, right.right) + sum(left.right, right.left)
+</font>
+<a name="4"></a><font color="#FF00FF"><a href="match1-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_3.gif"/></a>
+
+    return sum(root.left, root.right)
+
+
+#DRIVER CODE
+print("---------------------Test#1---------------------")
+#Example Tree 1
+root = BTNode(10)
+n1 = BTNode(6)
+n2 = BTNode(15)
+n3 = BTNode(3)
+n4 = BTNode(8)
+n5 = BTNode(12)
+</font>n6 = BTNode(20)
+
+root.left = n1
+root.right = n2
+
+n1.left = n3
+n1.right = n4
+
+n2.left = n5
+n2.right = n6
+print("Expected Output: 64")
+print("You output     :",mirror_sum(root))
+
+print("---------------------Test#2---------------------")
+
+#Example Tree 1
+root = BTNode(20)
+n1 = BTNode(15)
+n2 = BTNode(25)
+n3 = BTNode(10)
+n4 = BTNode(18)
+n5 = BTNode(5)
+n6 = BTNode(30)
+
+root.left = n1
+root.right = n2
+
+<a name="8"></a><font color="#00FFFF"><a href="match1-0.html#8" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_2.gif"/></a>
+
+n1.left = n3
+n1.right = n4
+
+n3.left = n5
+n2.right = n6
+print("Expected Output: 80")
+print("You output     :",mirror_sum(root))
+
+
+
+
+
+
+#task 6
+
+
+
+
+
+
+def isBST(root):
+</font>    def finder(node, min_val, max_val):
+        if node==None:
+            return True
+        if not (min_val &lt; node.elem &lt; max_val):
+            return False
+        return finder(node.left, min_val, node.elem) and finder(node.right, node.elem, max_val)
+    return finder(root, float('-inf'), float('inf'))
+
+#DRIVER CODE
+print("---------------------Test#1---------------------")
+#Example Tree 1
+root = BTNode(4)
+n1 = BTNode(9)
+n2 = BTNode(2)
+n3 = BTNode(3)
+n4 = BTNode(-5)
+n6 = BTNode(7)
+
+root.left = n1
+root.right = n2
+
+n1.left = n3
+n1.right = n4
+
+n2.right = n6
+print("Expected Output: False")
+print("You output     :",isBST(root))
+
+print("---------------------Test#2---------------------")
+
+#Example Tree 1
+root = BTNode(4)
+n1 = BTNode(2)
+n2 = BTNode(7)
+n3 = BTNode(-5)
+n4 = BTNode(3)
+n6 = BTNode(9)
+
+root.left = n1
+root.right = n2
+
+n1.left = n3
+n1.right = n4
+
+n2.right = n6
+print("Expected Output: True")
+print("You output     :",isBST(root))</pre>
+</body>
+</html>

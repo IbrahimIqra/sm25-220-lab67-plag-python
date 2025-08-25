@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>A67_Sec19_24301584_Faria-Shakil.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec21_21301224_AKM-Mainul-Ehsan-Pantho.txt<p></p><pre>
+Task 4:
+
+def swap_child(root, level, M):
+    if root is None:
+        return
+
+<a name="3"></a><font color="#00FFFF"><a href="match82-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_7.gif"/></a>
+
+    if level == M:
+        root.left, root.right = root.right, root.left
+
+    swap_child(root.left, level + 1, M)
+    swap_child(root.right, level + 1, M)
+
+    return root
+
+
+Lab 6
+</font>Task 5:
+
+def subtract_summation(root):
+<a name="4"></a><font color="#FF00FF"><a href="match82-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_6.gif"/></a>
+
+    def sum_subtree(node):
+        if node is None:
+            return 0
+        return node.elem + sum_subtree(node.left) + sum_subtree(node.right)
+
+    left_sum = sum_subtree(root.left) if root.left else 0
+</font>    right_sum = sum_subtree(root.right) if root.right else 0
+
+    return left_sum - right_sum
+
+
+
+Task 6:
+
+def level_sum(root):
+    if root is None:
+        return 0
+
+    queue = [None] * 1000
+    head = 0
+    tail = 0
+    queue[tail] = root
+    tail += 1
+
+    level = 0
+    diff = 0
+
+    while head &lt; tail:
+        level_size = tail - head
+        level_sum = 0
+
+        for _ in range(level_size):
+            node = queue[head]
+            head += 1
+
+            level_sum += node.elem
+
+            if node.left is not None:
+                queue[tail] = node.left
+                tail += 1
+            if node.right is not None:
+                queue[tail] = node.right
+                tail += 1
+
+        if level % 2 == 0:
+            diff -= level_sum
+        else:
+            diff += level_sum
+
+        level += 1
+
+    return diff
+
+Lab 7
+
+Task 4:
+<a name="0"></a><font color="#FF0000"><a href="match82-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_12.gif"/></a>
+
+def rangeSum(root, low, high):
+    if root is None:
+        return 0
+
+    if root.elem &lt; low:
+        return rangeSum(root.right, low, high)
+
+    if root.elem &gt; high:
+        return rangeSum(root.left, low, high)
+
+    return root.elem + rangeSum(root.left, low, high) + rangeSum(root.right, low, high)
+</font>
+
+<a name="2"></a><font color="#0000FF"><a href="match82-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_8.gif"/></a>
+
+Task 5:
+def mirror_sum_helper(left, right):
+    if left is None or right is None:
+        return 0
+    return left.elem + right.elem + mirror_sum_helper(left.left, right.right) + mirror_sum_helper(left.right, right.left)
+</font>
+def mirror_sum(root):
+    if root is None:
+        return 0
+    return root.elem + mirror_sum_helper(root.left, root.right)
+
+
+Task 6:
+<a name="1"></a><font color="#00FF00"><a href="match82-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_9.gif"/></a>
+
+def isBST_helper(root, min_val, max_val):
+    if root is None:
+        return True
+    if root.elem &lt;= min_val or root.elem &gt;= max_val:
+        return False
+    return isBST_helper(root.left, min_val, root.elem) and isBST_helper(root.right, root.elem, max_val)
+</font>
+def isBST(root):
+    return isBST_helper(root, float('-inf'), float('inf'))
+</pre>
+</body>
+</html>

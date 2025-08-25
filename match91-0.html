@@ -1,0 +1,201 @@
+<html>
+<head>
+<title>A67_Sec27_23201462_RUBAB-SAZDA-.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec27_23201462_RUBAB-SAZDA-.txt<p></p><pre>
+           LAB 6 
+----------------------------------------------------------------------------
+#TASK 04
+def swap_child(root, level, M):
+  if root==None:
+    return None
+  if level&lt;M:
+    temp=root.left
+    root.left=root.right
+<a name="0"></a><font color="#FF0000"><a href="match91-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_13.gif"/></a>
+
+    root.right=temp
+  swap_child(root.left, level+1, M)
+  swap_child(root.right, level+1, M)
+  return root
+
+
+#Driver Code
+root=BTNode('A')
+nB=BTNode('B')
+nC=BTNode('C')
+nD=BTNode('D')
+nE=BTNode('E')
+nF=BTNode('F')
+nG=BTNode('G')
+nH=BTNode('H')
+nI=BTNode('I')
+nJ=BTNode('J')
+
+root.left=nB
+root.right=nC
+nB.left=nD
+nB.right=nE
+#nC.left=None
+nC.right=nF
+nD.left=nG
+nD.right=nH
+nE.left=nI
+#nE.right=None
+nF.left=nJ
+#nF.right=None
+
+
+
+#TASK 05
+
+def subtract_summation(root):
+  if root ==None: 
+</font>    return 0 
+
+  def helper_func(node):
+    if node==None:
+<a name="1"></a><font color="#00FF00"><a href="match91-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+      return 0
+    return node.elem+helper_func(node.left)+ helper_func(node.right)
+    
+  left_sum = helper_func(root.left)
+  right_sum = helper_func(root.right)
+
+  return left_sum- right_sum      
+
+
+#Driver Code
+root=BTNode(71)
+n27=BTNode(27)
+n62=BTNode(62)
+n80=BTNode(80)
+n75=BTNode(75)
+n41=BTNode(41)
+n3=BTNode(3)
+</font>n87=BTNode(87)
+n56=BTNode(56)
+n19=BTNode(19)
+n89_node=BTNode(89)
+
+
+root.left=n27
+root.right=n62
+n27.left=n80
+n27.right=n75
+n62.left=n41
+n62.right=n3
+n80.left=n87
+n80.right=n56
+n3.left=n19
+n3.right=n89_node
+
+#TASK 06
+
+def level_sum(root):
+  sum_dict={"even":0, "odd":0}
+  #level=0
+  def helper(node,level):
+    if node==None:
+      return 
+    if level%2==0:
+      sum_dict["even"]+=node.elem
+    else:
+      sum_dict["odd"]+=node.elem
+
+    helper(node.left,level+1)
+    helper(node.right,level+1)
+  helper(root,0)
+  return sum_dict["odd"]- sum_dict["even"]
+
+
+
+
+         LAB 07
+-------------------------------------------------------------------------                 
+
+#TASK04
+
+def rangeSum(root, low, high):
+  if root==None:
+    return 0 
+
+  if root.elem&lt;low: 
+    return rangeSum(root.right, low, high)
+
+  if root.elem&gt; high:
+    return rangeSum(root.left, low, high)
+
+  elif root.elem&gt;=low and root.elem&lt;=high: 
+    return root.elem+ rangeSum(root.left, low,high)+ rangeSum(root.right,low,high)
+
+
+#TASK05
+
+def mirror_sum(root):
+  if root==None: 
+    return 0
+  def helper(node1, node2):
+<a name="2"></a><font color="#0000FF"><a href="match91-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_4.gif"/></a>
+
+    if node1==None or node2==None: 
+      return 0 
+
+    return (node1.elem+ node2.elem)+ helper(node1.left, node2.right)+ helper(node1.right, node2.left)
+
+  return helper(root.left, root.right)
+
+
+#TASK06
+
+def helper_max(node):
+</font>  while node.right!=None:
+    node= node.right
+  return node.elem
+
+def helper_min(node):
+   while node.left!=None:
+    node= node.left
+   return node.elem
+  
+def isBST(root):
+    
+  if root==None:
+    return True
+  if root.elem&gt;= root.left.elem or root.elem&lt;=root.right.elem: 
+    return "False"
+
+  if helper_max(root.right) &lt;= root.elem  or helper_min(root.left)&gt;= root.elem :
+    return False
+  return isBST(root.left) and isBST(root.right)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</body>
+</html>

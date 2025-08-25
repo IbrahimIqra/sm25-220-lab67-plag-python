@@ -1,0 +1,242 @@
+<html>
+<head>
+<title>A67_Sec25_23341043_Towsif-Hassan.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec28_22201924_Genius-Rabbani---GENIUS-RABBANI.txt<p></p><pre>
+﻿Assignment_Lab06:
+
+
+
+
+#task_04
+def swap_child(root, level, M):
+   if root==None and level==0:
+    return
+   if M&lt;=level:
+    return
+   nod1 = root.left
+   nod2 = root.right
+<a name="0"></a><font color="#FF0000"><a href="match122-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_14.gif"/></a>
+
+   root.left = nod2
+   root.right = nod1
+   
+   swap_child(root.right, level+1, M)
+   swap_child(root.left, level+1, M)
+   return root
+
+
+  #To Do
+
+
+
+
+#Driver Code
+root=BTNode('A')
+nodB = BTNode('B')
+nodC = BTNode('C')
+nodD = BTNode('D')
+nodE = BTNode('E')
+nodF = BTNode('F')
+nodG = BTNode('G')
+nodH = BTNode('H')
+nodI = BTNode('I')
+nodJ = BTNode('J')
+
+
+root.left = nodB
+root.right = nodC
+
+
+nodB.left = nodD
+nodB.right = nodE
+nodC.right = nodF
+</font>nodD.left = nodG
+nodD.right = nodH
+nodE.left = nodI
+nodF.left = nodJ
+
+
+
+
+
+
+
+
+#task_05
+
+
+def subtract_summation(root):
+    if root==None:
+      return 0
+
+
+    return subSum(root.left) -subSum(root.right)
+
+
+def subSum(solve):
+    if solve==None:
+        return 0
+<a name="2"></a><font color="#0000FF"><a href="match122-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_4.gif"/></a>
+
+    return subSum(solve.left)+ solve.elem +subSum(solve.right)
+   
+ 
+  #To Do
+
+
+#Driver Code
+root=BTNode(71)
+nod1 = BTNode(27)
+nod2 = BTNode(80)
+nod3 = BTNode(75)
+nod4 = BTNode(87)
+nod5 = BTNode(56)
+nod6 = BTNode(62)
+</font>nod7 = BTNode(41)
+nod8 = BTNode(3)
+nod9 = BTNode(19)
+nod10 = BTNode(89)
+
+
+
+
+root.left = nod1
+root.right = nod6
+nod1.left = nod2
+nod1.right = nod3
+
+
+nod2.left = nod4
+nod2.right = nod5
+
+
+nod6.right = nod7
+nod6.left = nod8
+
+
+nod8.right = nod9
+nod8.left = nod10
+
+
+
+
+
+
+#task_06
+
+
+
+
+def level_sum(root):
+    def extra(nod, lvl):
+        if nod==None:
+            return 0
+        if lvl%2==1:  
+            return extra(nod.left, lvl+1) -nod.elem+extra(nod.right, lvl+1)
+        else:              
+            return extra(nod.left, lvl+1)+ nod.elem +extra(nod.right, lvl+1)
+
+
+    return extra(root,1)
+
+
+
+
+
+
+
+
+Assignment_Lab07:
+
+
+
+
+#task_04
+
+
+def rangeSum(root, low, high):
+    if root==None:
+      return 0
+    result=0
+       
+    if high&gt;root.elem:
+        result += rangeSum(root.right, low, high)
+   
+    if low&lt;root.elem:
+        result += rangeSum(root.left, low, high)
+
+
+    if high&gt;= root.elem&gt;=low:
+        result += root.elem
+   
+    return result
+
+
+
+
+
+
+
+
+#task_05
+
+
+def mirror_sum(root):
+    if root==None:
+      return 0
+    def sum(left_nod, right_nod):
+        if left_nod== None:
+            return 0
+<a name="1"></a><font color="#00FF00"><a href="match122-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_9.gif"/></a>
+
+        if right_nod== None:
+          return 0
+        total= left_nod.elem + right_nod.elem
+        m= sum(left_nod.left, right_nod.right)
+        n = sum(left_nod.right, right_nod.left)
+
+
+        return total+m+n
+
+
+    return sum(root.left, root.right)
+
+
+
+
+
+
+
+
+#task_06
+
+
+def isBST(root):
+
+
+    def check(nod, min, max):
+        if nod == None:
+</font>            return True
+   
+        if max!=None and max.elem&lt;=nod.elem:
+            return False
+
+
+<a name="3"></a><font color="#00FFFF"><a href="match122-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_4.gif"/></a>
+
+        elif min!=None and min.elem&gt;=nod.elem:
+            return False
+
+
+ 
+        check_left = check(nod.left, min, nod)
+        check_right = check(nod.right, nod, max)
+       
+        return check_right and check_left
+   
+    return check(root, None, None)</font></pre>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>A67_Sec19_23101487_ANJAMUL-AREFIN-ASHIK.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec24_23301507_Tunajjina-Arif.txt<p></p><pre>
+LAB6
+
+#task4
+def swap_child(root, level, M):
+  if root == None:
+        return None
+  if level &gt;= M:
+        temp = root.left
+        root.left = root.right
+<a name="2"></a><font color="#0000FF"><a href="match62-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+        root.right = temp
+  swap_child(root.left, level+1, M)
+  swap_child(root.right, level+1, M)
+
+  return root
+#task5
+def sum_subtree(root):
+  if root == None:
+        return 0
+</font>  return root.elem + sum_subtree(root.left) + sum_subtree(root.right)
+def subtract_summation(root):
+    if root == None:
+        return 0
+    left_sum = sum_subtree(root.left)
+    right_sum = sum_subtree(root.right)
+    return left_sum - right_sum
+root=BTNode(71)
+root.left = BTNode(27)
+root.right = BTNode(62)
+root.left.left = BTNode(75)
+root.left.right = BTNode(80)
+root.right.left = BTNode(41)
+root.right.right = BTNode(3)
+root.left.left.left = BTNode(87)
+root.left.left.right = BTNode(56)
+root.right.right.left = BTNode(19)
+root.right.right.right = BTNode(89)
+#task6
+def level_sum(root):
+  if root == None:
+        return 0
+  arr = [None] * 100
+  front= 0
+  prev = 0
+  arr[prev] = (root, 0)
+  sum = 0
+  while front &lt;= prev:
+        node, level = arr[front]
+        front += 1
+        if level == 0:
+            sum += node.elem
+        else:
+            sum += node.elem % level
+        if node.left != None:
+            prev += 1
+            arr[prev] = (node.left, level + 1)
+        if node.right != None:
+            prev += 1
+            arr[prev] = (node.right, level + 1)
+  return sum
+<a name="0"></a><font color="#FF0000"><a href="match62-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_28.gif"/></a>
+
+LAB7
+
+#task4
+def rangeSum(root, low, high):
+    if root == None:
+        return 0
+    total = 0
+    if root.elem &gt;= low and root.elem &lt;= high:
+        total = total + root.elem
+    if root.elem &gt; low:
+        total = total + rangeSum(root.left, low, high)
+    if root.elem &lt; high:
+        total = total + rangeSum(root.right, low, high)
+    return total
+ 
+#task5
+def mirror_sum(root):
+    if root == None:
+        return 0
+    def helper(left, right):
+        if left == None or right == None:
+            return 0
+        total = left.elem + right.elem
+        total = total + helper(left.left, right.right)
+        total = total + helper(left.right, right.left)
+        return total
+    return helper(root.left, root.right)
+#task6
+def isBST(root):
+</font><a name="1"></a><font color="#00FF00"><a href="match62-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_8.gif"/></a>
+
+    def helper(node, min, max):
+        if node == None:
+            return True
+        if node.elem &lt;= min or node.elem &gt;= max:
+            return False    
+        return helper(node.left, min, node.elem) and helper(node.right, node.elem, max)        
+</font>    </pre>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<html>
+<head>
+<title>A67_Sec27_22201035_NAJIBAH-ZAMAN.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec01_23301183_Kifayat-Hossain.txt<p></p><pre>
+Lab-6:
+Task 04:
+def swap_child(root, level, M):
+
+    if not root:
+        return
+
+<a name="2"></a><font color="#0000FF"><a href="match140-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+    if level&gt;=M:
+      root.left,root.right=root.right,root.left
+
+
+      swap_child(root.left,level+1,M)
+      swap_child(root.right,level+1,M)
+
+    return root
+
+root.left = BTNode('B')
+</font><a name="0"></a><font color="#FF0000"><a href="match140-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_11.gif"/></a>
+
+root.right = BTNode('C')
+root.left.left = BTNode('D')
+root.left.right = BTNode('E')
+root.right.right = BTNode('F')
+root.left.left.left = BTNode('G')
+root.left.left.right = BTNode('H')
+root.left.right.left = BTNode('I')
+root.right.right.left = BTNode('J')
+</font>
+
+Task 05:
+def subtract_summation(root):
+   if not root:
+    return 0
+
+   def left(root):
+      if not root:
+        return 0
+      return root.elem+left(root.right)+left(root.left)
+   total_left=0
+   if root.left and left(root.left):
+    total_left+=left(root.left)
+
+   def right(root):
+      if not root:
+        return 0
+      return root.elem+right(root.right)+left(root.left)
+   total_right=0
+   if root.right and right(root.right):
+      total_right+=right(root.right)
+
+
+   return total_left-total_right
+
+root.left=BTNode(27)
+root.right=BTNode(62)
+root.left.left=BTNode(80)
+<a name="1"></a><font color="#00FF00"><a href="match140-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_9.gif"/></a>
+
+root.left.right=BTNode(75)
+root.right.left=BTNode(41)
+root.right.right=BTNode(3)
+root.left.left.left=BTNode(87)
+root.left.left.right=BTNode(56)
+root.right.right.left=BTNode(19)
+root.right.right.right=BTNode(89)
+</font>
+
+Task 06:
+def level_sum(root):
+    if not root:
+        return 0
+
+    def sum_helper(node, level, odd_sum, even_sum):
+        if not node:
+            return odd_sum, even_sum
+
+        if level % 2 != 0:
+            odd_sum += node.elem
+        else:
+            even_sum += node.elem
+
+        left_odd, left_even = sum_helper(node.left, level + 1, odd_sum, even_sum)
+        right_odd, right_even = sum_helper(node.right, level + 1, left_odd, left_even)
+
+        return right_odd, right_even
+
+    final_odd, final_even = sum_helper(root, 0, 0, 0)
+    return final_odd - final_even
+
+
+Lab 07:
+Task 04:
+def rangeSum(root, low, high):
+   if not root:
+    return 0
+
+   sum=0
+   if low&lt;=root.elem&lt;=high:
+    sum+=root.elem
+
+   if root.elem&lt;high:
+    sum+=rangeSum(root.right,low,high)
+
+   if root.elem&gt;low:
+    sum+=rangeSum(root.left,low,high)
+
+   return sum
+
+
+Task 05:
+def mirror_sum(root):
+   def checkMirror(left,right):
+      if not left and not right:
+        return 0
+<a name="3"></a><font color="#00FFFF"><a href="match140-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_4.gif"/></a>
+
+      if not left or not right:
+        return 0
+
+      current=left.elem+right.elem
+      outer=checkMirror(left.left,right.right)
+      inner=checkMirror(left.right,right.left)
+</font>
+      return current+outer+inner
+
+   return checkMirror(root.left,root.right)
+
+
+Task 06:
+def isBST(root):
+  if not root:
+    return None
+
+  if root.left.elem&lt;=root.elem&lt;=root.right.elem:
+    return True
+  else:
+    return False
+
+  isBST(root)
+
+
+</pre>
+</body>
+</html>

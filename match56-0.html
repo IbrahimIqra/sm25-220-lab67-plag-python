@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>A67_Sec27_22201902_Marzuk-Maaz---MARZUK-MAAZ.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec27_22201902_Marzuk-Maaz---MARZUK-MAAZ.txt<p></p><pre>
+CSE220 Lab 6 Tasks:
+
+Task 4:
+
+<a name="1"></a><font color="#00FF00"><a href="match56-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_14.gif"/></a>
+
+def swap_child(root, level, M):
+    if root is None:
+        return root
+    if level &gt;= M:
+        root.left, root.right = root.right, root.left
+    swap_child(root.left, level + 1, M)
+    swap_child(root.right, level + 1, M)
+    return root
+
+Task 5:
+
+def subtract_summation(root):
+</font>    def subtree_sum(node):
+        if node is None:
+            return 0
+        return node.elem + subtree_sum(node.left) + subtree_sum(node.right)
+    if root is None:
+        return 0
+<a name="2"></a><font color="#0000FF"><a href="match56-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+    left_sum = subtree_sum(root.left)
+    right_sum = subtree_sum(root.right)
+    return left_sum - right_sum
+
+Task 6:
+
+def level_sum(root, level=1):
+    if root is None:
+</font>        return 0
+    current_val = root.elem if level % 2 == 1 else -root.elem
+    return current_val + level_sum(root.left, level + 1) + level_sum(root.right, level + 1)
+
+
+CSE220 Lab 7 Tasks:
+
+<a name="0"></a><font color="#FF0000"><a href="match56-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_35.gif"/></a>
+
+Task 4:
+
+def rangeSum(root, low, high):
+    if root is None:
+        return 0
+    if root.elem &lt; low:
+        return rangeSum(root.right, low, high)
+    if root.elem &gt; high:
+        return rangeSum(root.left, low, high)
+    return root.elem + rangeSum(root.left, low, high) + rangeSum(root.right, low, high)
+
+Task 5:
+
+def mirror_sum(root):
+    def mirror_pair_sum(left, right):
+        if left is None or right is None:
+            return 0
+        total = left.elem + right.elem
+        total += mirror_pair_sum(left.left, right.right)
+        total += mirror_pair_sum(left.right, right.left)
+        return total
+    if root is None:
+        return 0
+    return mirror_pair_sum(root.left, root.right)
+
+Task 6:
+
+def isBST(root):
+</font>    prev = [None]
+    def inorder(node):
+        if node is None:
+            return True
+        if not inorder(node.left):
+            return False
+        if prev[0] is not None and node.elem &lt;= prev[0]:
+            return False
+        prev[0] = node.elem
+        return inorder(node.right)
+    return inorder(root)</pre>
+</body>
+</html>

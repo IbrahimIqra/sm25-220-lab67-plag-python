@@ -1,0 +1,210 @@
+<html>
+<head>
+<title>A67_Sec23_22101445_Abrar-Iqbal-Turja.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec21_22201477_Md.-Ashraful-Gani.txt<p></p><pre>
+A67_Sec21_22201477_Md-Ashraful-Gani.txt
+Q4. Swap Children Nodes
+<a name="2"></a><font color="#0000FF"><a href="match8-0.html#2" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_6.gif"/></a>
+
+-------------------------
+# Binary Tree Node Class
+class BTNode:
+    def __init__(self, value):
+        self.elem = value
+        self.left = None
+        self.right = None
+def swap_child(node, depth, M):
+    if node is None:
+</font>        return node
+<a name="3"></a><font color="#00FFFF"><a href="match8-0.html#3" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_3_3.gif"/></a>
+
+        if depth &gt;= M:
+        node.left, node.right = node.right, node.left
+
+    
+    swap_child(node.left, depth + 1, M)
+    swap_child(node.right, depth + 1, M)
+</font>
+<a name="5"></a><font color="#FF0000"><a href="match8-0.html#5" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_2.gif"/></a>
+
+    return node
+
+
+def inorder_traversal(node):
+    if node:
+        inorder_traversal(node.left)
+        print(node.elem, end=" ")
+        inorder_traversal(node.right)
+
+# Driver Code
+root = BTNode('A')
+</font><a name="0"></a><font color="#FF0000"><a href="match8-0.html#0" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_8.gif"/></a>
+
+root.left = BTNode('B')
+root.right = BTNode('C')
+root.left.left = BTNode('D')
+root.left.right = BTNode('E')
+root.right.right = BTNode('F')
+root.left.left.left = BTNode('G')
+root.left.left.right = BTNode('H')
+root.left.right.left = BTNode('I')
+root.right.right.left = BTNode('J')
+</font>
+print("Original Tree Inorder: ", end="")
+inorder_traversal(root)   # Output: G D H B I E A C J F
+print()
+
+swap_child(root, 0, 2)
+print("Swapped Tree Inorder: ", end="")
+inorder_traversal(root)   # Output: J F C A I E B G D H
+
+
+Q5. Subtraction of Nodes
+-------------------------
+# Binary Tree Node
+class BTNode:
+<a name="4"></a><font color="#FF00FF"><a href="match8-0.html#4" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_4_3.gif"/></a>
+
+    def __init__(self, value):
+        self.elem = value
+        self.left = None
+        self.right = None
+def get_sum(node):
+    if node is None:
+        return 0
+</font>    return node.elem + get_sum(node.left) + get_sum(node.right)
+
+
+def subtract_summation(root):
+    if root is None:
+        return 0
+    left_total = get_sum(root.left)
+    right_total = get_sum(root.right)
+    return left_total - right_total
+
+
+# Driver Code
+<a name="1"></a><font color="#00FF00"><a href="match8-0.html#1" target="0"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_8.gif"/></a>
+
+root = BTNode(71)
+root.left = BTNode(27)
+root.right = BTNode(62)
+root.left.left = BTNode(80)
+root.left.right = BTNode(75)
+root.right.left = BTNode(41)
+root.right.right = BTNode(3)
+root.left.left.left = BTNode(87)
+root.left.left.right = BTNode(56)
+root.right.right.left = BTNode(19)
+</font>root.right.right.right = BTNode(89)
+
+print(subtract_summation(root))   # Expected: 111
+
+
+Q6. Difference of Level Sum
+-----------------------------
+# Binary Tree Node
+class BTNode:
+    def __init__(self, value):
+        self.elem = value
+        self.left = None
+        self.right = None
+
+
+def level_sum(node, lvl=1):
+    if node is None:
+        return 0
+        if lvl % 2 == 1:
+        return node.elem + level_sum(node.left, lvl + 1) + level_sum(node.right, lvl + 1)
+    else:
+        return -node.elem + level_sum(node.left, lvl + 1) + level_sum(node.right, lvl + 1)
+
+
+# Driver Code
+root = BTNode(1)
+n2, n3, n4, n5, n6, n7, n8 = BTNode(2), BTNode(3), BTNode(4), BTNode(5), BTNode(6), BTNode(7), BTNode(8)
+
+root.left, root.right = n2, n3
+n2.left = n4
+n3.left, n3.right = n5, n6
+n5.left, n5.right = n7, n8
+
+print(level_sum(root))  
+ 
+########LAB-7#########
+
+# Solution 1:
+def rangeSum(root, low, high):
+    if root is None:
+        return 0
+    
+    stack = [root]
+    total = 0
+    
+    while stack:
+        current = stack.pop()
+        
+        if low &lt;= current.data &lt;= high:
+            total += current.data
+        
+        if current.data &gt; low and current.left:
+            stack.append(current.left)
+        
+        if current.data &lt; high and current.right:
+            stack.append(current.right)
+    
+    return total
+
+# Solution 2: 
+def mirror_sum(root):
+    if root is None or root.left is None or root.right is None:
+        return 0
+    
+    left_stack = [root.left]
+    right_stack = [root.right]
+    total = 0
+    
+    while left_stack and right_stack:
+        left_node = left_stack.pop()
+        right_node = right_stack.pop()
+        
+        total += left_node.data + right_node.data
+        
+        if left_node.left and right_node.right:
+            left_stack.append(left_node.left)
+            right_stack.append(right_node.right)
+        
+        if left_node.right and right_node.left:
+            left_stack.append(left_node.right)
+            right_stack.append(right_node.left)
+    
+    return total
+
+# Solution 3: 
+def isBST(root):
+    if root is None:
+        return True
+    
+    stack = []
+    current = root
+    prev_val = None
+    
+    while current or stack:
+        while current:
+            stack.append(current)
+            current = current.left
+        
+        current = stack.pop()
+        
+        if prev_val is not None and current.data &lt;= prev_val:
+            return False
+        
+        prev_val = current.data
+        current = current.right
+    
+    return True</pre>
+</body>
+</html>

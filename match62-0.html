@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>A67_Sec19_23101487_ANJAMUL-AREFIN-ASHIK.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec19_23101487_ANJAMUL-AREFIN-ASHIK.txt<p></p><pre>
+#lab 6
+#task 4
+def swap_child(root, level, M):
+    if root is None:
+        return root
+    
+       if level &gt;= M:
+        root.left, root.right = root.right, root.left
+
+   
+    swap_child(root.left, level + 1, M)
+    swap_child(root.right, level + 1, M)
+
+    return root
+
+#task 5
+class BTNode:
+    def __init__(self, elem):
+        self.elem = elem
+        self.right = None
+        self.left = None
+
+
+def tree_construction(arr, i=1):
+    if i &gt;= len(arr) or arr[i] is None:
+        return None
+    p = BTNode(arr[i])
+    p.left = tree_construction(arr, 2 * i)
+    p.right = tree_construction(arr, 2 * i + 1)
+    return p
+
+
+def inorder(root):
+    if root is None:
+        return
+    inorder(root.left)
+    print(root.elem, end=" ")
+    inorder(root.right)
+
+
+
+def swap_child(root, level, M):
+    if root is None:
+        return root
+
+       if level &gt;= M:
+<a name="2"></a><font color="#0000FF"><a href="match62-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_5.gif"/></a>
+
+        root.left, root.right = root.right, root.left
+
+    
+    swap_child(root.left, level + 1, M)
+    swap_child(root.right, level + 1, M)
+
+    return root
+#task 6
+def level_sum(root):
+  if root == None:
+    return 0
+</font>
+  queue = [None] * 100  # Fixed array for BFS
+  start = 0
+  end = 1
+  queue[0] = root
+
+  level = 1    odd = 0
+  even = 0
+
+  while start &lt; end:
+    count = end - start  # Number of nodes in this level
+    temp_sum = 0
+
+    for i in range(count):
+      node = queue[start]
+      start = start + 1
+      temp_sum = temp_sum + node.elem
+
+      if node.left != None:
+        queue[end] = node.left
+        end = end + 1
+      if node.right != None:
+        queue[end] = node.right
+        end = end + 1
+
+    if level % 2 == 1:
+      odd = odd + temp_sum
+    else:
+      even = even + temp_sum
+
+    level = level + 1
+
+<a name="0"></a><font color="#FF0000"><a href="match62-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_26.gif"/></a>
+
+  return odd - even
+
+
+#lab 7
+#task 4
+def rangeSum(root, low, high):
+  if root == None:   # if tree is empty
+    return 0
+  
+  total = 0
+  
+ 
+  if root.elem &gt;= low and root.elem &lt;= high:
+    total = total + root.elem
+    if root.elem &gt; low:
+    total = total + rangeSum(root.left, low, high)
+  
+
+  if root.elem &lt; high:
+    total = total + rangeSum(root.right, low, high)
+
+  return total
+#task 5
+def mirror_sum(root):
+  if root == None:
+    return 0
+  def helper(left, right):
+    if left == None or right == None:
+      return 0
+
+       total = left.elem + right.elem
+
+    
+    total = total + helper(left.left, right.right)
+    total = total + helper(left.right, right.left)
+
+    return total
+
+  return helper(root.left, root.right)
+
+#task 6
+
+def checkBST(node, mini, maxi):
+</font><a name="1"></a><font color="#00FF00"><a href="match62-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_7.gif"/></a>
+
+    if node == None:
+        return True
+    if node.elem &lt;= mini or node.elem &gt;= maxi:
+        return False
+    return checkBST(node.left, mini, node.elem) and checkBST(node.right, node.elem, maxi)
+</font>
+def isBST(root):
+    return checkBST(root, float("-inf"), float("inf"))
+</pre>
+</body>
+</html>

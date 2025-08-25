@@ -1,0 +1,363 @@
+<html>
+<head>
+<title>A67_Sec27_23301521_Rashedul-Karim-Mahim.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec27_23301521_Rashedul-Karim-Mahim.txt<p></p><pre>
+﻿Lab 06
+
+
+4. 
+def swap_child(root, level, M):
+  #To Do
+    if root == None:
+        return root
+<a name="0"></a><font color="#FF0000"><a href="match110-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_15.gif"/></a>
+
+    elif  level&lt;M:
+        # root.left, root.right = root.right, root.left
+        temp = root.right
+        root.right = root.left
+        root.left = temp
+
+
+    # M+=1
+    swap_child(root.right,level+1,M)
+    swap_child(root.left, level+1,M)
+
+
+    return root
+#Driver Code
+root=BTNode('A')
+#Write other nodes by yourself from the given tree of Doc File
+node1= BTNode("C")
+node2=BTNode("B")
+node3=BTNode("D")
+node4=BTNode("E")
+node5=BTNode("F")
+node6=BTNode("G")
+node7=BTNode("H")
+node8=BTNode("I")
+node9=BTNode("J")
+
+
+
+
+root.left = node2
+root.right = node1
+
+
+node2.right = node4
+node2.left = node3
+
+
+node3.right =node7
+node3.left = node6
+
+
+node4.left = node8
+
+
+node1.right = node5
+
+
+node5.left =node9
+
+
+
+
+print('Given Tree Inorder Traversal: ', end = ' ')
+inorder(root)   #Given Tree Inorder Traversal: G D H B I E A C J F
+print()
+
+
+root2 = swap_child(root, 0, 2)
+print('Swapped Tree Inorder Traversal: ', end = ' ')
+inorder(root2)  #Swapped Tree Inorder Traversal: J F C A I E B G D H
+</font>
+
+
+
+6. 
+def level_sum(root):
+    #To Do
+    odd_sum = 0
+    even_sum = 0
+
+
+def odd_sum(root):
+
+
+    if root!=None:
+        if root.val%2!=0:
+            return root.val + odd_sum(root.right) + odd_sum(root.left)
+    else:
+        even_sum+=root.val
+
+
+        odd_sum, even_sum = odd_sum(root.left, level + 1, odd_sum, even_sum)
+        odd_sum, even_sum = odd_sum(root.right, level + 1, odd_sum, even_sum)
+
+
+<a name="1"></a><font color="#00FF00"><a href="match110-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_3.gif"/></a>
+
+        return odd_sum, even_sum
+
+
+    return even_sum - odd_sum
+
+
+
+
+#DRIVER CODE
+root = BTNode(1)
+n2 = BTNode(2)
+n3 = BTNode(3)
+n4 = BTNode(4)
+n5 = BTNode(5)
+n6 = BTNode(6)
+n7 = BTNode(7)
+</font>n8 = BTNode(8)
+root.left = n2
+root.right = n3
+
+
+n2.left = n4
+n3.left = n5
+n3.right = n6
+
+
+n5.left = n7
+n5.right = n8
+
+
+
+
+print(level_sum(root)) 
+
+
+
+
+Lab 07 
+4. 
+def rangeSum(root, low, high):
+  if root==None:
+    return 0
+  if root.elem &lt; low:
+    return rangeSum(root.right, low, high)
+  if root.elem &gt; high:
+    return rangeSum(root.left, low, high)
+  return root.elem + rangeSum(root.left, low, high) + rangeSum(root.right, low, high)
+
+
+#DRIVER CODE
+
+
+
+
+
+
+
+
+print("---------------------Test#1---------------------")
+#Example Tree 1
+root = BTNode(8)
+n1 = BTNode(4)
+n2 = BTNode(12)
+n3 = BTNode(2)
+n4 = BTNode(6)
+n5 = BTNode(10)
+n6 = BTNode(14)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.left = n5
+n2.right = n6
+print("Expected Output: 36")
+print("You output     :",rangeSum(root, 5, 13))
+
+
+print("---------------------Test#2---------------------")
+
+
+#Example Tree 1
+root = BTNode(10)
+n1 = BTNode(5)
+n2 = BTNode(15)
+n3 = BTNode(3)
+n4 = BTNode(7)
+
+
+n6 = BTNode(18)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.right = n6
+print("Expected Output: 32")
+print("You output     :",rangeSum(root, 7, 15))
+
+
+5. 
+def mirror_sum(root):
+    if root==None:
+        return 0
+    return sum(root.left,root.right)
+
+
+<a name="2"></a><font color="#0000FF"><a href="match110-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_3.gif"/></a>
+
+def sum(left,right):
+
+
+    if left==None or right==None:
+        return 0
+
+
+    total=left.elem+right.elem
+    #Swapping the positions
+    root.left,root.right=root.right,root.left
+</font>
+
+
+
+    #Adding the elements
+    return total+sum(left.left,right.right)+sum(left.right,right.left)
+
+
+    #return total
+
+
+
+
+
+
+
+
+print("---------------------Test#1---------------------")
+#Example Tree 1
+root = BTNode(10)
+n1 = BTNode(6)
+n2 = BTNode(15)
+n3 = BTNode(3)
+n4 = BTNode(8)
+n5 = BTNode(12)
+n6 = BTNode(20)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.left = n5
+n2.right = n6
+print("Expected Output: 64")
+print("You output     :",mirror_sum(root))
+
+
+print("---------------------Test#2---------------------")
+
+
+#Example Tree 1
+root = BTNode(20)
+n1 = BTNode(15)
+n2 = BTNode(25)
+n3 = BTNode(10)
+n4 = BTNode(18)
+n5 = BTNode(5)
+n6 = BTNode(30)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n3.left = n5
+n2.right = n6
+print("Expected Output: 80")
+print("You output     :",mirror_sum(root))
+
+
+6. 
+
+
+def isBST(root):
+  def helper(node, lower = float("-inf"), upper = float("inf")):
+    if not node:
+      return True
+    val = node.elem
+    if val &lt;= lower or val &gt;= upper:
+      return False
+    return helper(node.right, val, upper) and helper(node.left, lower, val)
+  return helper(root)
+#DRIVER CODE
+print("---------------------Test#1---------------------")
+#Example Tree 1
+root = BTNode(4)
+n1 = BTNode(9)
+n2 = BTNode(2)
+n3 = BTNode(3)
+n4 = BTNode(-5)
+n6 = BTNode(7)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.right = n6
+print("Expected Output: False")
+print("You output     :",isBST(root))
+
+
+print("---------------------Test#2---------------------")
+
+
+#Example Tree 1
+root = BTNode(4)
+n1 = BTNode(2)
+n2 = BTNode(7)
+n3 = BTNode(-5)
+n4 = BTNode(3)
+n6 = BTNode(9)
+
+
+root.left = n1
+root.right = n2
+
+
+n1.left = n3
+n1.right = n4
+
+
+n2.right = n6
+print("Expected Output: True")
+print("You output     :",isBST(root))</pre>
+</body>
+</html>

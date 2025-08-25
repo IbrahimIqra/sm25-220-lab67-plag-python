@@ -1,0 +1,173 @@
+<html>
+<head>
+<title>A67_Sec15_22201957_ABRAR-SHAHRIAR---ABRAR-SHAHRIAR.txt</title>
+</head>
+<body bgcolor="white">
+<hr/>
+A67_Sec15_22201957_ABRAR-SHAHRIAR---ABRAR-SHAHRIAR.txt<p></p><pre>
+_________________-LAB6-_____________________
+
+#########TASK4
+def swap_child(root, level, M):
+  if root==None:
+    return None
+  if level&lt;=M:
+<a name="0"></a><font color="#FF0000"><a href="match105-1.html#0" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_0_14.gif"/></a>
+
+    root.left,root.right=root.right,root.left
+  swap_child(root.left,level+1,M)
+  swap_child(root.right,level+1,M)
+  return root
+  #To Do
+
+
+#Driver Code
+root=BTNode('A')
+n1=BTNode('B')
+n2=BTNode('C')
+n3=BTNode('D')
+n4=BTNode('E')
+n5=BTNode('F')
+n6=BTNode('G')
+n7=BTNode('H')
+n8=BTNode('I')
+n9=BTNode('J')
+
+root.left=n1
+root.right=n2
+
+n1.left=n3
+n1.right=n4
+n2.right=n5
+</font>n3.left=n6
+n3.right=n7
+n4.left=n8
+n5.left=n9
+#Write other nodes by yourself from the given tree of Doc File
+
+
+print('Given Tree Inorder Traversal: ', end = ' ')
+inorder(root)   #Given Tree Inorder Traversal: G D H B I E A C J F
+print()
+
+root2 = swap_child(root, 0, 2)
+print('Swapped Tree Inorder Traversal: ', end = ' ')
+inorder(root2)  #Swapped Tree Inorder Traversal: J F C A I E B G D H
+
+
+
+
+
+
+
+
+#########TASK5
+<a name="1"></a><font color="#00FF00"><a href="match105-1.html#1" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_1_13.gif"/></a>
+
+def subtract_summation(root):
+  if root==None:
+    return 0
+  def sum(root):
+    if root==None:
+      return 0
+    return root.elem+sum(root.left)+sum(root.right)
+  left=sum(root.left)
+  right=sum(root.right)
+  return left-right
+
+#Driver Code
+root=BTNode(71)
+#Write other nodes by yourself from the given tree of Doc File
+n1=BTNode(27)
+n2=BTNode(62)
+n3=BTNode(80)
+n4=BTNode(75)
+n5=BTNode(41)
+n6=BTNode(3)
+</font>n7=BTNode(87)
+n8=BTNode(56)
+n9=BTNode(19)
+n10=BTNode(89)
+
+root.left=n1
+root.right=n2
+
+n1.left=n3
+n1.right=n4
+n2.right=n6
+n2.left=n5
+n3.left=n7
+n3.right=n8
+n6.left=n9
+n6.right=n10
+print(subtract_summation(root)) #This should print 111
+
+
+
+
+
+
+
+#########TASK6
+def level_sum(root):
+  if root==None:
+    return 0
+  def sum(root,l=0,sumd={}):
+<a name="2"></a><font color="#0000FF"><a href="match105-1.html#2" target="1"><img align="left" alt="other" border="0" src="http://moss.stanford.edu/bitmaps/tm_2_7.gif"/></a>
+
+    if root==None:
+      return
+    if l%2==0:
+      sumd["even"]+=root.elem
+    else:
+      sumd["odd"]+=root.elem
+    sum(root.left,l+1,sumd)
+    sum(root.right,l+1,sumd)
+</font>  sumd={"even":0,"odd":0}
+  sum(root,0,sumd)
+  return sumd["even"]-sumd["odd"]                             
+
+
+
+
+
+____________________-LAB7-__________________
+
+######TASK4
+def rangeSum(root, low, high):
+  if root==None:
+    return 0
+  s=0
+  if low&lt;=root.elem&lt;=high:
+    s+=root.elem
+  s+= rangeSum(root.left, low, high)
+  s+= rangeSum(root.right, low, high)
+  return s
+
+
+
+######TASK6
+def isBST(root):
+  if root==None:
+    return True
+  if root.left!=None:
+    left=findmax(root.left)
+    if left&gt;=root.elem:
+      return False
+  if root.right!=None:
+    right=findmin(root.right)
+    if right&lt;=root.elem:
+      return False
+  return isBST(root.left) and isBST(root.right)
+def findmax(root):
+  if root.right==None:
+    return root.elem
+  else:
+    return findmax(root.right)
+def findmin(root):
+  if root.left==None:
+    return root.elem
+  else:
+    return findmin(root.left)</pre>
+</body>
+</html>
